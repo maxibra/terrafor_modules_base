@@ -1,7 +1,7 @@
-variable "create_vpc" {
-  description = "Controls if VPC should be created (it affects almost all resources)"
-  type        = bool
-  default     = true
+variable "cidr" {
+  description = "The CIDR block for the VPC. Default value is a valid CIDR, but not acceptable by AWS and should be overridden"
+  type        = string
+  default     = "0.0.0.0/0"
 }
 
 variable "name" {
@@ -10,10 +10,28 @@ variable "name" {
   default     = ""
 }
 
-variable "tags" {
-  description = "A map of tags to add to all resources"
-  type        = map(string)
-  default     = {}
+variable "enable_dns_support" {
+  description = "Additional tags for the VPC"
+  type        = bool
+  default     = true
+}
+
+variable "enable_dns_hostnames" {
+  description = "Additional tags for the VPC"
+  type        = bool
+  default     = false
+}
+
+variable "enable_classiclink" {
+  description = "Additional tags for the VPC"
+  type        = bool
+  default     = false
+}
+
+variable "instance_tenancy" {
+  description = "Additional tags for the VPC"
+  type        = bool
+  default     = false
 }
 
 variable "vpc_tags" {
@@ -21,3 +39,4 @@ variable "vpc_tags" {
   type        = map(string)
   default     = {}
 }
+
